@@ -1,45 +1,17 @@
-void calculate_positions(){
-  Snake head = new Snake(snake.get(0).getx(),snake.get(0).gety(),snake.get(0).getdx(),snake.get(0).getdy());
-  for(int i = len-1; i>0; i--){
-     snake.get(i).setx(snake.get(i-1).getx());
-     snake.get(i).sety(snake.get(i-1).gety());
-     snake.get(i).setdx(snake.get(i-1).getdx());
-     snake.get(i).setdy(snake.get(i-1).getdy());
+public Snake calculatePositions(Snake snake){
+  SnakeBody head = new SnakeBody(snake.snakeBodyArr.get(0).getx(),snake.snakeBodyArr.get(0).gety(),snake.snakeBodyArr.get(0).getdx(),snake.snakeBodyArr.get(0).getdy(),snake.snakeBodyArr.get(0).getsegmentSize());
+  int length = snake.length;
+  for(int i = length-1; i>0; i--){
+     snake.snakeBodyArr.get(i).setx(snake.snakeBodyArr.get(i-1).getx());
+     snake.snakeBodyArr.get(i).sety(snake.snakeBodyArr.get(i-1).gety());
+     snake.snakeBodyArr.get(i).setdx(snake.snakeBodyArr.get(i-1).getdx());
+     snake.snakeBodyArr.get(i).setdy(snake.snakeBodyArr.get(i-1).getdy());
   }
-  head.setx(head.getx() + seg*head.getdx());
-  head.sety(head.gety() + seg*head.getdy());
-  snake.remove(0);
-  snake.add(0,head);
-}
-
-void moveUp(ArrayList<Snake> snake)
-{
-  if(snake.get(0).getdy() == 0){
-    snake.get(0).setdx(0);
-    snake.get(0).setdy(-1);
-  }
-}
-
-void moveDown(ArrayList<Snake> snake)
-{
-  if(snake.get(0).getdy() == 0){
-    snake.get(0).setdx(0);
-    snake.get(0).setdy(1);
-  }
-}
-
-void moveLeft(ArrayList<Snake> snake)
-{
-  if(snake.get(0).getdx() == 0){
-    snake.get(0).setdx(-1);
-    snake.get(0).setdy(0);
-  }
-}
-
-void moveRight(ArrayList<Snake> snake)
-{
-  if(snake.get(0).getdx() == 0){
-    snake.get(0).setdx(1);
-    snake.get(0).setdy(0);
-  }
+  head.setx(head.getx() + snake.snakeBodyArr.get(0).getsegmentSize() * head.getdx());
+  head.sety(head.gety() + snake.snakeBodyArr.get(0).getsegmentSize() * head.getdy());
+  if(head.getx() > displayWidth || head.getx() < 0 || head.gety() > displayHeight || head.gety() < 0)
+    snake.alive = false;
+  snake.snakeBodyArr.remove(0);
+  snake.snakeBodyArr.add(0,head);
+  return snake;
 }

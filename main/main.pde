@@ -1,14 +1,18 @@
+Snake snake = new Snake();
+Food food = new Food();
 void setup(){
-	size(1500,1000);
-	setup_starting_snake();
+	fullScreen();
+	snake.setupStartingSnake();
 }
-
 void draw(){
 	background(0);
-	draw_snake();
-	controlSnake();
-	calculate_positions();
-	draw_food();
+	snake.drawSnake();
+	snake = controlSnake(snake);
+	snake = calculatePositions(snake);
+	if(!snake.alive){
+		snake.killSnake();
+		setup();
+	}
 	delay(20);
 }
 
