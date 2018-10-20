@@ -21,6 +21,5 @@ void draw(){
 	  snake.ateFood = false;
 	}
 	food.drawFood();
-	delay(20);
 }
 

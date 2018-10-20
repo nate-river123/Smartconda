@@ -21,9 +21,7 @@ public Snake calculatePositions(Snake snake, Food food){
   if(head.getx() == food.getx() && head.gety() == food.gety()){
     snake.ateFood = true;
     snake.snakeBodyArr.add(tail);
-    System.out.println("Tail added, length now: " + snake.snakeBodyArr.size());
   }
-  if(snake.ateFood)System.out.println("Tail added 2, length now: " + snake.snakeBodyArr.size());
   snake.snakeBodyArr.remove(0);
   snake.snakeBodyArr.add(0,head);
   return snake;
