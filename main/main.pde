@@ -1,6 +1,8 @@
-Snake snake = new Snake();
-Food food = new Food();
+Snake snake;
+Food food;
 void setup(){
+	snake = new Snake();
+	food = new Food();
 	fullScreen();
 	snake.setupStartingSnake();
 	food.plantFood(snake);
@@ -15,7 +17,6 @@ void draw(){
 	  setup();
 	}
 	if(snake.ateFood){
-	  System.out.println("Snake ate food, length: " + snake.snakeBodyArr.size());
 	  food.plantFood(snake);
 	  snake.ateFood = false;
 	}
