@@ -1,4 +1,4 @@
-public void printScore(Snake snake){
+public void printScore(){
 	fill(255);
 	stroke(255);
 	strokeWeight(4);
@@ -7,6 +7,18 @@ public void printScore(Snake snake){
 	textFont(monospaced);
 	textAlign(RIGHT);
 	text("Score", displayWidth - 10 , 50);
-	text("" + (snake.snakeBodyArr.size() - 5), displayWidth - 33, 78);
+	text("" + (snake.snakeBodyArr.size() - DEFAULT_SNAKE_LENGTH), displayWidth - 33, 78);
 	noStroke();
+}
+
+public void loadHighScore(){
+	String[] lines = loadStrings(HIGHSCORE_SAVE_FILE);
+	highScore = Integer.parseInt(lines[0]);
+}
+
+public void storeHighScore(){
+	String score = highScore.toString();
+	String[] lines = new String[1];
+	lines[0] = score;
+	saveStrings(HIGHSCORE_SAVE_FILE, lines);
 }

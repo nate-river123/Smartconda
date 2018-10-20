@@ -1,4 +1,4 @@
-public Snake controlSnake(Snake snake){
+public Snake controlSnake(){
   if(keyPressed){
 	if(key == 'w' || key == 'W' || key == UP)moveUp(snake.snakeBodyArr);
 	else if(key == 'a' || key == 'A')moveLeft(snake.snakeBodyArr);

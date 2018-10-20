@@ -1,4 +1,4 @@
-public Snake calculatePositions(Snake snake, Food food){
+public Snake calculatePositions(){
   SnakeBody head = new SnakeBody(snake.snakeBodyArr.get(0).getx(),
                           snake.snakeBodyArr.get(0).gety(),
                           snake.snakeBodyArr.get(0).getdx(),

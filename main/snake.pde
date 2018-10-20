@@ -52,17 +52,13 @@ public class Snake{
     }
   }
   public void drawSnake(int fillColor){
-  SnakeBody head = this.snakeBodyArr.get(0);
-  fill(fillColor, this.snakeBodyArr.size()*30);
-  rect(head.getx(), head.gety(), head.getsegmentSize(), head.getsegmentSize(), 10, 10, 10, 10);
-  for(int i = 1; i < this.snakeBodyArr.size(); i++){
-    SnakeBody snakeBody = this.snakeBodyArr.get(i);
-    fill(fillColor, (this.snakeBodyArr.size()-i)*30);
-    rect(snakeBody.getx(), snakeBody.gety(), snakeBody.getsegmentSize(), snakeBody.getsegmentSize());
-  }
-}
-  public void killSnake(){
-    int noOfBlinks = DEFAULT_BLINK_RATE;
-    //blinking effect
+    SnakeBody head = this.snakeBodyArr.get(0);
+    fill(fillColor, this.snakeBodyArr.size()*30);
+    rect(head.getx(), head.gety(), head.getsegmentSize(), head.getsegmentSize(), 10, 10, 10, 10);
+    for(int i = 1; i < this.snakeBodyArr.size(); i++){
+      SnakeBody snakeBody = this.snakeBodyArr.get(i);
+      fill(fillColor, (this.snakeBodyArr.size()-i)*30);
+      rect(snakeBody.getx(), snakeBody.gety(), snakeBody.getsegmentSize(), snakeBody.getsegmentSize());
+    }
   }
 }
