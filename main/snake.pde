@@ -26,40 +26,43 @@ public class SnakeBody{
 }
 
 public class Snake{
-  ArrayList<SnakeBody> snakeBodyArr;
-  Integer length;
-  Boolean alive;
+  public ArrayList<SnakeBody> snakeBodyArr;
+  public Boolean alive;
+  public Boolean ateFood;
   public Snake(){
+    this.alive = true;
+    this.ateFood = false;
   }
   public Snake(ArrayList<SnakeBody> snakeBodyArr, int length){
     this.snakeBodyArr = snakeBodyArr;
-    this.length = length;
+    this.alive = true;
+    this.ateFood = false;
   }
   public void setupStartingSnake(){
     this.snakeBodyArr = new ArrayList<SnakeBody>();
-    this.length = DEFAULT_SNAKE_LENGTH;
     this.alive = true;
     float firstx = DEFAULT_X_COORDINATE_OF_SNAKE;
     float firsty = DEFAULT_Y_COORDINATE_OF_SNAKE;
     int firstdx = DEFAULT_DX_OF_SNAKE;
     int firstdy = DEFAULT_DY_OF_SNAKE;
     int segmentSize = DEFAULT_SNAKE_SEGMENT_SIZE;
-    for(int i = 0; i < this.length; i++){
+    for(int i = 0; i < DEFAULT_SNAKE_LENGTH; i++){
       SnakeBody body = new SnakeBody(firstx - i*segmentSize, firsty, firstdx, firstdy, segmentSize);
       this.snakeBodyArr.add(body);
     }
   }
-  public void drawSnake(){
-    SnakeBody head = this.snakeBodyArr.get(0);
-    fill(255, this.length*30);
-    rect(head.getx(), head.gety(), head.getsegmentSize(), head.getsegmentSize(), 10, 10, 10, 10);
-    for(int i = 1; i < this.length; i++){
-      SnakeBody snakeBody = this.snakeBodyArr.get(i);
-      fill(255, (this.length-i)*30);
-      rect(snakeBody.getx(), snakeBody.gety(), snakeBody.getsegmentSize(), snakeBody.getsegmentSize());
-    }
+  public void drawSnake(int fillColor){
+  SnakeBody head = this.snakeBodyArr.get(0);
+  fill(fillColor, this.snakeBodyArr.size()*30);
+  rect(head.getx(), head.gety(), head.getsegmentSize(), head.getsegmentSize(), 10, 10, 10, 10);
+  for(int i = 1; i < this.snakeBodyArr.size(); i++){
+    SnakeBody snakeBody = this.snakeBodyArr.get(i);
+    fill(fillColor, (this.snakeBodyArr.size()-i)*30);
+    rect(snakeBody.getx(), snakeBody.gety(), snakeBody.getsegmentSize(), snakeBody.getsegmentSize());
   }
+}
   public void killSnake(){
-    ;
+    int noOfBlinks = DEFAULT_BLINK_RATE;
+    //blinking effect
   }
-} 
+}
