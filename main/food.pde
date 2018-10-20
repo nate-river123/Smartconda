@@ -11,7 +11,7 @@ public class Food{
   public void sety(float y){this.y = y;}
   public void plantFood(Snake snake){
     while(true){
-      this.x = 10 * (int)(random(0, displayWidth/10));
+      this.x = 10 * (int)(random(0, (displayWidth - 100)/10));
       this.y = 10 * (int)(random(0, displayHeight/10));
       if(checkFood(snake))break;
     }
@@ -25,6 +25,6 @@ public class Food{
   }
   public void drawFood(){
     fill(255,0,0);
-    rect(this.x, this.y, snake.snakeBodyArr.get(0).getsegmentSize(), snake.snakeBodyArr.get(0).getsegmentSize());
+    rect(this.x, this.y, 10, 10, 2, 2, 2, 2);
   }
 }
