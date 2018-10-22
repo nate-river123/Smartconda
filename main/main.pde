@@ -14,6 +14,7 @@ void setup(){
 }
 void draw(){
 	if(run){
+		noCursor();
 		background(0);
 		printScore();
 		snake.drawSnake(255);
@@ -47,6 +48,7 @@ void draw(){
 			text("\nCongratulations! You Broke The High Score", displayWidth/2, displayHeight/2);
 		}
 		text("Press 'P' To Play Again\nPress 'E' or 'Esc' To Exit", displayWidth/2, displayHeight/2 + 100);
+		noLoop();
 	}
 }
 
@@ -57,6 +59,7 @@ void keyPressed(){
 			exit();	
 		}
 		else if(k == 'p' || k == 'P'){
+			loop();
 			setup();
 		}
 	}
