@@ -69,7 +69,7 @@ void draw(){
 		background(0);
 		fill(255);
 		textAlign(CENTER);
-		PFont monospaced = createFont("Monospaced", 30);
+		PFont monospaced = createFont("ComicSansMS-Bold", 30);
 		textFont(monospaced);
 	    text("Snake Died", displayWidth/2, displayHeight/2 - 100);
 	    text("\nYour Score: " + (snake.snakeBodyArr.size() - DEFAULT_SNAKE_LENGTH), displayWidth/2, displayHeight/2 - 100);
