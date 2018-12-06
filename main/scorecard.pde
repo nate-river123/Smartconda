@@ -16,16 +16,6 @@ public void loadHighScore(){
 	highScore = Integer.parseInt(lines[0]);
 }
 
-public void printAIModeOn(){
-	stroke(255);
-	strokeWeight(4);
-	PFont monospaced = createFont("ComicSansMS-Bold", 22);
-	textFont(monospaced);
-	textAlign(RIGHT);
-	text("AI Mode On", displayWidth - 100, 30);
-	noStroke();
-}
-
 public void storeHighScore(){
 	String score = highScore.toString();
 	String[] lines = new String[1];

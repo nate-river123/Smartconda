@@ -23,8 +23,7 @@ void draw(){
 		background(2700359);
 		noCursor();
 		printScore();
-		printAIModeOn();
-		image(robot, 50, 50, 192, 192);
+		image(robot, 0, 0, 192, 192);
 		snake.drawSnake(255);
 		food.drawFood();
 		snake = controlSnake();
@@ -42,7 +41,7 @@ void draw(){
 		background(0);
 		noCursor();
 		printScore();
-		image(human, 50, 50, 192, 192);
+		image(human, 0, 0, 192, 192);
 		snake.drawSnake(255);
 		food.drawFood();
 		snake = controlSnake();
