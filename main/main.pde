@@ -3,6 +3,7 @@ Food food;
 Boolean run, highScoreBroken, ai;
 Integer highScore;
 Float reward;
+PImage human, robot;
 void setup(){
 	snake = new Snake();
 	food = new Food();
@@ -13,14 +14,17 @@ void setup(){
 	snake.setupStartingSnake();
 	food.plantFood(snake);
 	loadHighScore();
+	human = loadImage("data/human.png");
+	robot = loadImage("data/robot.png");;
 }
 
 void draw(){
 	if(run && ai){
-		background(20);
+		background(2700359);
 		noCursor();
 		printScore();
 		printAIModeOn();
+		image(robot, 50, 50, 192, 192);
 		snake.drawSnake(255);
 		food.drawFood();
 		snake = controlSnake();
@@ -38,6 +42,7 @@ void draw(){
 		background(0);
 		noCursor();
 		printScore();
+		image(human, 50, 50, 192, 192);
 		snake.drawSnake(255);
 		food.drawFood();
 		snake = controlSnake();

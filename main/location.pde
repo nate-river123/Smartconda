@@ -17,8 +17,10 @@ public Snake calculatePositions(){
   }
   head.setx(head.getx() + snake.snakeBodyArr.get(0).getsegmentSize() * head.getdx());
   head.sety(head.gety() + snake.snakeBodyArr.get(0).getsegmentSize() * head.getdy());
-  if(head.getx() > displayWidth - 100 || head.getx() < 0 || head.gety() > displayHeight || head.gety() < 0)
+  if(head.getx() > displayWidth - 100 || head.getx() < 0 || head.gety() > displayHeight || head.gety() < 0){
     snake.alive = false;
+    return snake;
+  }
   for(int i = 1; i<snake.snakeBodyArr.size(); i++){
     SnakeBody snakeBody = snake.snakeBodyArr.get(i);
     if(head.getx() == snakeBody.getx() && head.gety() == snakeBody.gety()){
