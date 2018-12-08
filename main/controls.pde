@@ -1,4 +1,4 @@
-public Snake controlSnake(){
+public int controlSnake(){
   if(!ai){
     if(keyPressed){
       if(key == 'w' || key == 'W')moveUp(snake.snakeBodyArr);
@@ -6,15 +6,16 @@ public Snake controlSnake(){
       else if(key == 's' || key == 'S')moveDown(snake.snakeBodyArr);
       else if(key == 'd' || key == 'D')moveRight(snake.snakeBodyArr);
     }
+    return (int)key;
   }
   else{
-    char decision = getAiDecision();
-    if(decision == 'u' || decision == 'U')moveUp(snake.snakeBodyArr);
-    else if(decision == 'l' || decision == 'L')moveLeft(snake.snakeBodyArr);
-    else if(decision == 'r' || decision == 'R')moveRight(snake.snakeBodyArr);
-    else if(decision == 'd' || decision == 'D')moveDown(snake.snakeBodyArr);
+    int decision = getAiDecision();
+    if(decision == DOWN)moveDown(snake.snakeBodyArr);
+    else if(decision == RIGHT)moveRight(snake.snakeBodyArr);
+    else if(decision == UP)moveUp(snake.snakeBodyArr);
+    else if(decision == LEFT)moveLeft(snake.snakeBodyArr);
+    return decision;
   }
-  return snake;
 }
   public void moveUp(ArrayList<SnakeBody> snakeBodyArr){
     if(snakeBodyArr.get(0).getdy() == 0){

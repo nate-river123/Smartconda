@@ -1,9 +1,12 @@
+import java.util.HashMap;
+import java.lang.*;
+import java.util.Random;
 Snake snake;
 Food food;
 Boolean run, highScoreBroken, ai;
 Integer highScore;
-Float reward;
 PImage human, robot;
+HashMap< String, Float[] > QTable = new HashMap<String, Float[]>(); 
 void setup(){
 	snake = new Snake();
 	food = new Food();
@@ -15,26 +18,39 @@ void setup(){
 	food.plantFood(snake);
 	loadHighScore();
 	human = loadImage("data/human.png");
-	robot = loadImage("data/robot.png");;
+	robot = loadImage("data/robot.png");
 }
 
 void draw(){
 	if(run && ai){
+		frameRate(10);
 		background(2700359);
 		noCursor();
 		printScore();
 		image(robot, 0, 0, 192, 192);
 		snake.drawSnake(255);
 		food.drawFood();
-		snake = controlSnake();
-		snake = calculatePositions();
+		Float reward = 0.0;
+		String stateBeforeTakingStep = determineState();
+		int decision = controlSnake();
+		calculatePositions();
 		if(!snake.alive){
 			run = false;
+			reward = -1.0;
 		}
-		if(snake.ateFood){
+		else if(snake.ateFood){
 		  food.plantFood(snake);
 		  snake.ateFood = false;
+		  reward = 1.0;
 		}
+		else{
+			reward = -0.1;
+		}
+		String stateAfterTakingStep = determineState();
+		updateQTable(stateBeforeTakingStep, stateAfterTakingStep, decision, reward);
+		Float[] defaultValue = {0.0,0.0,0.0,0.0};
+		Float[] qs = QTable.getOrDefault(stateBeforeTakingStep, defaultValue);
+		//System.out.println(stateBeforeTakingStep + " : { " + qs[0] + ", " + qs[1] + ", " + qs[2]+", "+qs[3]+" }");
 	}
 	if(run && !ai){
 		background(0);
@@ -43,8 +59,8 @@ void draw(){
 		image(human, 0, 0, 192, 192);
 		snake.drawSnake(255);
 		food.drawFood();
-		snake = controlSnake();
-		snake = calculatePositions();
+		controlSnake();
+		calculatePositions();
 		if(!snake.alive){
 			if(snake.snakeBodyArr.size() - DEFAULT_SNAKE_LENGTH > highScore){
 				highScoreBroken = true;
@@ -54,7 +70,7 @@ void draw(){
 			run = false;
 			delay(500);
 		}
-		if(snake.ateFood){
+		else if(snake.ateFood){
 		  food.plantFood(snake);
 		  snake.ateFood = false;
 		}

@@ -6,8 +6,8 @@ public void printScore(){
 	PFont font = createFont("ComicSansMS-Bold", 23);
 	textFont(font);
 	textAlign(RIGHT);
-	text("Score", displayWidth - 10 , 50);
-	text("" + (snake.snakeBodyArr.size() - DEFAULT_SNAKE_LENGTH), displayWidth - 33, 78);
+	text("Score", displayWidth - 75 , 50);
+	text("" + (snake.snakeBodyArr.size() - DEFAULT_SNAKE_LENGTH), displayWidth - 50, 78);
 	noStroke();
 }
 

@@ -6,3 +6,7 @@ public final Integer DEFAULT_DX_OF_SNAKE = 1;
 public final Integer DEFAULT_DY_OF_SNAKE = 0;
 public final Integer DEFAULT_BLINK_RATE = 5;
 public final String HIGHSCORE_SAVE_FILE = "highScore.txt";
+public final Integer DOWN = 0;
+public final Integer RIGHT = 1;
+public final Integer UP = 2;
+public final Integer LEFT = 3;
