@@ -29,7 +29,6 @@ void draw(){
 		snake = controlSnake();
 		snake = calculatePositions();
 		if(!snake.alive){
-			reward = -1.0;
 			run = false;
 		}
 		if(snake.ateFood){
